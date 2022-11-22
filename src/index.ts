@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 import * as process from 'process';
 import type { PnpmLockFile } from './types';
 
-const lockFilePath:string = process.argv[process.argv.length - 1];
+const lockFilePath:string = process.argv.slice(2)[0];
 if (!lockFilePath) {
   console.error('no lock file');
   process.exit(0);
