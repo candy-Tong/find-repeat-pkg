@@ -1,0 +1,41 @@
+{
+  "name": "find-repeat-pkg",
+  "version": "0.0.7",
+  "bin": {
+    "find-repeat-pkg": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "release": "npm run build && npm version patch && pnpm publish --registry https://registry.npmjs.org/",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "~8.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "tsx": "^3.12.1",
+    "typescript": "^4.6.3",
+    "vite": "^3.2.4"
+  },
+  "description": "find pnpm repeat package with lock file",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "typings": "typings/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/candy-Tong/find-repeat-pkg.git"
+  },
+  "keywords": [],
+  "author": "candychuang",
+  "license": "ISC"
+}
