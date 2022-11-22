@@ -1,17 +1,29 @@
 #!/usr/bin/env node
 import yaml from 'js-yaml';
-import { readFileSync } from 'fs';
+import fs from 'fs';
 import * as process from 'process';
+import * as path from 'path';
 import type { PnpmLockFile } from './types';
 
-const lockFilePath:string = process.argv.slice(2)[0];
-if (!lockFilePath) {
-  console.error('no lock file');
+const root:string = process.argv.slice(2)[0];
+if (!root) {
+  console.error('no lock');
   process.exit(0);
 }
 
+// 找到 lock 文件路径
+let lockFilePath: string = root;
 try {
-  const doc = yaml.load(readFileSync(lockFilePath, 'utf8')) as PnpmLockFile;
+  const stat = fs.lstatSync(root);
+  if (stat.isDirectory()) {
+    lockFilePath = path.resolve(lockFilePath, './pnpm-lock.yaml');
+  }
+} catch (e) {
+  console.error(e);
+}
+
+try {
+  const doc = yaml.load(fs.readFileSync(lockFilePath, 'utf8')) as PnpmLockFile;
   const map: Record<string, string[]> = {};
   Object.keys(doc.packages).forEach((pkg) => {
     const arr = pkg.split('/');
