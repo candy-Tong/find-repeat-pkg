@@ -1,6 +1,6 @@
 {
   "name": "find-repeat-pkg",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "bin": {
     "find-repeat-pkg": "./dist/index.js"
   },
