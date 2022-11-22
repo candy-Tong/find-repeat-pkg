@@ -1,13 +1,13 @@
 {
   "name": "find-repeat-pkg",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "bin": {
     "find-repeat-pkg": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
-    "release": "npm run build && npm version patch && pnpm publish --registry https://registry.npmjs.org/",
+    "release": "npm run build && npx crlf --set=LF  dist/*   && npm version patch && pnpm publish --registry https://registry.npmjs.org/",
     "lint": "eslint . --fix"
   },
   "dependencies": {
